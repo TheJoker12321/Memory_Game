@@ -1,5 +1,6 @@
 from game_tools.board import *
 import logging
+import datetime
 
 
 logging.basicConfig(level= logging.INFO,
@@ -39,6 +40,8 @@ def game_over(board: list[list[str]]) -> bool:
     return False
 
 def init_game(data_game, size):
+    start = datetime.datetime.now()
+
     print_board(data_game["board"])
     while not game_over(data_game["board"]):
         choose1 = choose_range(size)
@@ -61,6 +64,9 @@ def init_game(data_game, size):
             logging.info("you wrong")
             print_board(data_game["board"])
 
+
+    end = datetime.datetime.now()
+    print(f"The time you played is: {end - start}")
     print(f"you finished the game.  your mistakes are: {data_game["mistakes"]}")
     logging.info("finished the game!")
 
