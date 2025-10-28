@@ -9,7 +9,7 @@ def print_board(board: list[list[str]]) -> None:
 
 
 def shuffle(size) -> list[str]:
-    cards = [str(i) for i in range(((size ** 2) // 2) + 1)]
+    cards = [str(i) for i in range(1, ((size ** 2) // 2) + 1)]
     for i in range(10000):
         idx1 = random.randint(0, len(cards) - 1)
         idx2 = random.randint(0, len(cards) - 1)

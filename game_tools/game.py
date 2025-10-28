@@ -61,8 +61,8 @@ def init_game(data_game, size):
             logging.info("you wrong")
             print_board(data_game["board"])
 
-    print(f"you finished the game_tools.  your mistakes are: {data_game["mistakes"]}")
-    logging.info("finished the game_tools!")
+    print(f"you finished the game.  your mistakes are: {data_game["mistakes"]}")
+    logging.info("finished the game!")
 
 
 
