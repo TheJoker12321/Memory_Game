@@ -2,8 +2,9 @@ from game_tools.board import *
 import logging
 
 
-logging.basicConfig(level=logging.INFO,
-                    format="%(asctime)s - %(levelname)s - %(message)s")
+logging.basicConfig(level= logging.INFO,
+                    filename= "status_game",
+                    format= "%(asctime)s - %(levelname)s - %(message)s")
 def data(size):
     data_game = {
         "board": create_board(size),
