@@ -4,25 +4,25 @@ import logging
 
 logging.basicConfig(level=logging.INFO,
                     format="%(asctime)s - %(levelname)s - %(message)s")
-def data():
+def data(size):
     data_game = {
-        "board": create_board(),
-        "game_board": shuffle(create_game_board()),
+        "board": create_board(size),
+        "game_board": create_game_board(shuffle(size),size),
         "Face up cards": 0,
         "mistakes": 0
     }
     return data_game
 
-def range_x(x: int, size: int = 10) -> bool:
-    return 0 < x < size
+def range_x(x: int, size) -> bool:
+    return 0 <= x < size
 
-def range_y(y: int, size: int = 10) -> bool:
-    return 0 < y < size
+def range_y(y: int, size) -> bool:
+    return 0 <= y < size
 
-def choose_range():
+def choose_range(size):
        x = int(input("choose row between 1 - 10: ")) - 1
        y = int(input("choose column between 1 - 10: ")) - 1
-       while not range_x(x) or not range_y(y):
+       while not range_x(x, size) or not range_y(y, size):
            print("try again: ")
            x = int(input("choose row between 1 - 10: ")) - 1
            y = int(input("choose column between 1 - 10: ")) - 1
@@ -37,12 +37,12 @@ def game_over(board: list[list[str]]) -> bool:
         return True
     return False
 
-def init_game(data_game):
+def init_game(data_game, size):
     print_board(data_game["board"])
     while not game_over(data_game["board"]):
-        choose1 = choose_range()
+        choose1 = choose_range(size)
         print("choose one more card: ")
-        choose2 = choose_range()
+        choose2 = choose_range(size)
         if data_game["game_board"][choose1[0]][choose1[1]] == data_game["game_board"][choose2[0]][choose2[1]]:
             data_game["board"][choose1[0]][choose1[1]] = data_game["game_board"][choose1[0]][choose1[1]]
             data_game["board"][choose2[0]][choose2[1]] = data_game["game_board"][choose2[0]][choose2[1]]
